@@ -141,7 +141,7 @@ def click_b2(channel):
 
 	if apIndx >= 0:
 		main_fun(998)
-		print ''.join(pwdLst) #TODO change password for real...
+		print(''.join(pwdLst)) #TODO change password for real...
 		start = stamp - SCREEN_SAVER + 5
 	else:
 		result = os.popen("iwlist {0} scan 2>/dev/null | grep '^..*ESSID:\"..*\"$' | sed 's/^.*ESSID:\"\\(..*\\)\".*$/\\1/'".format(iface)).read()
@@ -424,6 +424,6 @@ try:
 		time.sleep(1)
 
 except:
-	print "Stopped", sys.exc_info()[0]
+	print("Stopped", sys.exc_info()[0])
 	raise
 GPIO.cleanup()
