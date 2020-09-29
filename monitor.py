@@ -30,6 +30,7 @@ BTN1_PIN = 21
 BTN2_PIN = 20
 BTN3_PIN = 16
 
+
 # Some constants
 SCREEN_LINES = 4
 SCREEN_SAVER = 20.0
@@ -262,7 +263,8 @@ def draw_scn(channel):
 				ssid = subprocess.check_output("iwgetid --raw | awk '{printf \"WiFi:%s\", $0}'", shell = True)
 				freq = subprocess.check_output("iwgetid --freq | awk '{gsub(/Frequency:/,\"\"); printf \" %.1f %s\", $2,$3}'", shell = True)
 				LINE1 = subprocess.check_output("hostname -I | awk '{printf \"IP: %s\", $1}'", shell = True )
-				LINE2 = subprocess.check_output("df -h /mnt/usb | awk '$NF==\"/mnt/usb\"{printf \"Disk:%s/%s %s\", $3,$2,$5}'", shell = True )
+				#LINE2 = subprocess.check_output("df -h /mnt/usb | awk '$NF==\"/mnt/usb\"{printf \"Disk:%s/%s %s\", $3,$2,$5}'", shell = True )
+				LINE2 = subprocess.check_output("df -h | grep -e '/dev/mmc' -e '/dev/root' -e '/dev/usb'", shell = True )
 				LINE3 = ssid + freq
 				LINE4 = subprocess.check_output("cat /sys/class/thermal/thermal_zone0/temp | awk '{printf \"Temp:%.1fC\", $1/1000}'", shell = True )
 				draw.rectangle((0,61,84,63), outline=255, fill=1)
