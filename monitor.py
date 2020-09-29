@@ -314,8 +314,10 @@ def draw_scn(channel):
 
 				draw.polygon([(x1,y2+6),(x2,y2-1),(x2,y2+4),(x3,y2+4),(x3,y2+8),(x2,y2+8),(x2,y2+13)], outline=255, fill=1)
 				draw.rectangle((125,12,127,60), outline=255, fill=0)
-
-				thumb_s = 48.0 / idxLen #Step
+				if (idxLen != 0):
+				  thumb_s = 48.0 / idxLen #Step
+				else:
+				  thumb_s = 0 # JUST TO AVOID ERROR!!!
 				thumb_h = thumb_s * 4 #Because the screen can display 4 rows at a time
 				thumb_0 = idxWin * thumb_s + 12
 				thumb_1 = thumb_0 + thumb_h
@@ -413,7 +415,8 @@ GPIO.add_event_detect(JS_R_PIN, GPIO.RISING, callback=select_h, bouncetime=200)
 GPIO.add_event_detect(JS_U_PIN, GPIO.RISING, callback=select_v, bouncetime=200)
 GPIO.add_event_detect(JS_D_PIN, GPIO.RISING, callback=select_v, bouncetime=200)
 
-iface = subprocess.check_output("iwgetid | awk '{print $1}'", shell = True).rstrip("\r\n")
+#iface = subprocess.check_output("iwgetid | awk '{print $1}'", shell = True).rstrip("\r\n")
+iface = subprocess.check_output("iwgetid | awk '{print $1}'", shell = True)
 
 # Main Loop
 try:
