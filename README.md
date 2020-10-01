@@ -1,3 +1,13 @@
+# Fork of PiDisplay Project (for 1.3" OLED Display HAT for Raspberry Pi)
+Florian Fersch (2020)
+
+## My Changes
+
+  - Add script to start project on reboot
+  - Fix bugs and smaller issues
+    -> Fix script to fit updates of libraries
+  - Upgraded to Python3
+
 # PiDisplay
 Setup and use the 1.3" OLED Display HAT for Raspberry Pi by Waveshare
 
