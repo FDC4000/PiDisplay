@@ -12,5 +12,4 @@ crontab -l > /usr/bin/PiDisplay/crontab.$USER.$(date "+%Y.%m.%d-%H.%M.%S").bak
 
 # Start script on every reboot
 line="0 * * * *  /usr/bin/PiDisplay/monitor.sh >> /usr/bin/PiDisplay/cron.log 2>&1"
-(crontab -u userhere -l; echo "$line" ) | crontab -u userhere -
-
+(crontab -u $USER -l; echo "$line" ) | crontab -u $USER -
